@@ -1,4 +1,8 @@
+# テストケースを作成して愚直解を実行する
+# テストケースを作成する際には、generate関数を編集する
+# 主に実験とかに使える
 
+import sys,os,filecmp
 from random import randint, choices, sample, shuffle
 import subprocess
 
@@ -15,34 +19,22 @@ def str_over_26(n):  # 重複あり英小文字n文字
 CNT = 0
 
 # 実行時間制限
-TIME_LIMIT = 5
+TIME_LIMIT = 500
 
 # 入力生成
 def generate():
-  C_MAX = pow(10, 5) * 2
-  with open("in.txt", 'w') as out:
-      N = 100
-      print(N, file=out)
-      C = list()
-      SUM = 0
-      for i in reversed(range(N)):
-          c = randint(0, C_MAX - i - SUM)
-          C.append(c)
-          SUM += c
-      print(*C, file=out)
 
-while True:
-    CNT += 1
-    generate()
-    try:
-        with open(out_result, 'w') as f_out:
-            res = subprocess.run(["python", "main.py", "in.txt"], stdout=f_out, stderr=subprocess.PIPE, timeout=TIME_LIMIT)
-            if res.returncode != 0:
-                print('!!!ERROR!!! SUBMIT_CODE')
-                exit()
-    except subprocess.TimeoutExpired:
-        print('!!!ERROR!!! TIMEOUT EXPIRED')
-        exit()
+#   with open(out_file, 'w') as f:
+#     f.write(f"{L} {R}\n")
+
+    return
     
-    if CNT < 10 or CNT % 10 == 0:
-        print(f"{CNT} case passed")
+generate()
+
+# random_checker_ac.py に書いたコードを実行したいときはコメントアウトを外す
+
+# with open(out_result, 'w') as f_out:
+#   res = subprocess.run(["python", "random_checker_ac.py", "in.txt"], stdout=f_out, stderr=subprocess.PIPE, timeout=TIME_LIMIT)
+#   if res.returncode != 0:
+#       print('!!!RUN TIME ERROR!!!')
+#       exit()

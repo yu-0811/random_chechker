@@ -15,31 +15,27 @@ def str_min_26(n):  # 重複なし英小文字n文字
 def str_over_26(n):  # 重複あり英小文字n文字
     return choices(alp, k=n)
 
+number = ["1","2","3","4","5","6","7","8","9"]
+
 CNT = 0
 
 # 実行時間制限
-TIME_LIMIT = 5
+TIME_LIMIT = 500
 
 # 入力生成
 def generate():
-  C_MAX = 2*pow(10,5)
-  with open(out_file, 'w') as out:
-    N = 100
-    print(N, file=out)
-    C = list()
-    SUM = 0
-    for i in reversed(range(N)):
-        c = randint(0, C_MAX - i - SUM)
-        C.append(c)
-        SUM += c
-    print(*C, file=out)
+ 
+#   with open(out_file, 'w') as f:
+
+    return
+        
 
 while True:
     CNT += 1
     generate()
     try:
         with open(out_result, 'w') as f_out:
-            res_main = subprocess.run(["python", "main.py", "in.txt"], stdout=f_out, stderr=subprocess.PIPE, timeout=TIME_LIMIT)
+            res_main = subprocess.run(["python", "../../main.py", "in.txt"], stdout=f_out, stderr=subprocess.PIPE, timeout=TIME_LIMIT)
             if res_main.returncode != 0:
                 print('!!!ERROR!!! SUBMIT_CODE')
                 exit()
@@ -49,7 +45,7 @@ while True:
 
     try:
         with open(out_ac_result, 'w') as f_out_ac:
-            res_ac = subprocess.run(["python", "../../random_checker_ac.py", "in.txt"], stdout=f_out_ac, stderr=subprocess.PIPE, timeout=TIME_LIMIT)
+            res_ac = subprocess.run(["python", "random_checker_ac.py", "in.txt"], stdout=f_out_ac, stderr=subprocess.PIPE, timeout=TIME_LIMIT)
             if res_ac.returncode != 0:
                 print('!!!ERROR!!! AC_CODE')
                 exit()

@@ -13,16 +13,7 @@ def str_over_26(n): # 重複あり英小文字n文字
 # 入力生成
 def generate():
   with open(out_file, 'w') as out: 
-    T = str_over_26(randint(1,100))
-    print(''.join(T),file=out)
-    N = randint(1,100)
-    print(N,file=out)
-    for _ in range(N):
-      A = randint(1,10)
-      S = list()
-      for _ in range(A):
-        S.append(''.join(str_over_26(randint(1,10))))
-      print(A,*S,file=out)
+    pass
 
   res = os.system("python main.py in.txt")
   if res!=0:
